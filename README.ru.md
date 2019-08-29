@@ -13,9 +13,10 @@
 2. Установка nodejs. REPL
 3. Арифметические выражения
 4. Переменные, операции над переменными
-5. Установка Vistual Studio Code, необходимы плагины
+5. Установка Vistual Studio Code, необходимы плагины (LiveServer, Beautify, Debugger for Chrome, Node.js Extension Pack)
 
 ### Неделя 2 - Функции, логичиские операции, выражения
+
 Изучение базовых конструкций языка JavaScript. Проект консольной игры Камень-Ножницы-Бумага
 
 1. Функции
@@ -54,6 +55,8 @@
 
 Пример: http://www.codeskulptor.org/#user4-PgyXog4HlK-57.py
 
+Tutorial: https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser
+
 ### Неделя 5 - Работа с мышью, методы массивов, применение объектов в качестве словарей
 Работа с мышью, изучение методов массивов и объектов, отрисовка изображений
 
@@ -64,6 +67,8 @@
 5. Визуализация итераций
 
 Пример: http://www.codeskulptor.org/#user14_2efEcq2Lra_76.py
+
+Пример js: http://divideby5.com/games/memorymatcher/
 
 ### Неделя 6 - Объектно-ориентированное программирование
 Использование объектов в JavaScript, работа с отдельными частями изображения
@@ -85,3 +90,8 @@
 Изучение множеств (set) JavaScript, вычисление коллизий между спрайтами, анимация спрайтов
 
 Пример: http://www.codeskulptor.org/#user16_kCDAMKm5qf_14.py
+
+# Ссылки
+
+1. (Introduction Phasher.io)[https://academy.zenva.com/course/phaser-101-introduction-to-game-development]
+2. (Game Development with Phaser.JS)[https://www.codecademy.com/learn/learn-phaser]
