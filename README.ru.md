@@ -19,11 +19,12 @@
 
 Изучение базовых конструкций языка JavaScript. Проект консольной игры Камень-Ножницы-Бумага
 
-1. Функции
-2. Логические выражения и сравнение
-3. Условные выражения
+1. Логические выражения и сравнение
+2. Условные выражения
+3. Консольный ввод/вывод
+4. Функции
 
-Пример: http://www.codeskulptor.org/#user10_tc5hCGsKnf_3.py
+Пример: <http://www.codeskulptor.org/#user10_tc5hCGsKnf_3.py>
 
 ### Неделя 3 - Событий-ориентированное программирование, локальные и глобальные переменные
 
@@ -31,33 +32,38 @@
 
 1. Событий-ориентированное программирование
 2. Лоакльные и глобальные переменные
-3. Игровой дивижек phaser.io 
+3. Игровой дивижек phaser.io
 
-Пример: http://www.codeskulptor.org/#user11_d6b9YIiY9oDC4XE.py
+Пример: <http://www.codeskulptor.org/#user11_d6b9YIiY9oDC4XE.py>
 
 ### Неделя 3 - Холст, отрисовка объектов, таймеры
-Создание холста в JavaScript, отрисовка объектов на холсте, создание игры stopwatch
+
+Создание холста в JavaScript, отрисовка объектов на холсте, создание игры StopWatch
+
 1. Холст и отрисовка
 2. Работа со строками
 3. Интерактивная отрисовка
 4. Таймеры
 5. Визуализация отрисоки и таймеры
 
-Пример: http://www.codeskulptor.org/#user12_JXilvVaUvP3CKjC.py
+Пример: <http://www.codeskulptor.org/#user12_JXilvVaUvP3CKjC.py>
 
 ### Неделя 4 - Массивы, работа с клавиатурой, моделирование перемещения объектов
-Изучение основ работы с массивами в JavaScript, моделирование перемещения объектов в JavaScript, классическая аркадная игра "Pong"
+
+Изучение основ работы с массивами в `JavaScript`, моделирование перемещения объектов в `JavaScript`, классическая аркадная игра "Pong"
+
 1. Массивы
 2. Вввод с клавиатуры
 3. Движение
 4. Коллизии и отскок
 5. Управление скоростью
 
-Пример: http://www.codeskulptor.org/#user4-PgyXog4HlK-57.py
+Пример: <http://www.codeskulptor.org/#user4-PgyXog4HlK-57.py>
 
-Tutorial: https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser
+Tutorial: <https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser>
 
 ### Неделя 5 - Работа с мышью, методы массивов, применение объектов в качестве словарей
+
 Работа с мышью, изучение методов массивов и объектов, отрисовка изображений
 
 1. Работа с мышью
@@ -66,32 +72,36 @@ Tutorial: https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_g
 4. Изображения
 5. Визуализация итераций
 
-Пример: http://www.codeskulptor.org/#user14_2efEcq2Lra_76.py
+Пример: <http://www.codeskulptor.org/#user14_2efEcq2Lra_76.py>
 
-Пример js: http://divideby5.com/games/memorymatcher/
+Пример js: <http://divideby5.com/games/memorymatcher/>
 
 ### Неделя 6 - Объектно-ориентированное программирование
+
 Использование объектов в JavaScript, работа с отдельными частями изображения
 
-1. Объектно-ориентированное программирование 
+1. Объектно-ориентированное программирование
 2. Работа с объектами
 3. Объекты для игры Blackjack
 4. Части изображения
 5. Визуализация объектов
 
-Пример: http://www.codeskulptor.org/#user15_ZoYz8vHeMS_82.py
+Пример: <http://www.codeskulptor.org/#user15_ZoYz8vHeMS_82.py>
 
 ### Неделя 7 - Физика игры, спрайты
+
 Моделирование ускорения и торможения, работа со спрайтами, добавление звуковых эфектов в игру
 
-Пример: http://www.codeskulptor.org/#examples-ricerocks_template.py
+Пример: <http://www.codeskulptor.org/#examples-ricerocks_template.py>
 
 ### Неделя 8 - Множества и анимация
+
 Изучение множеств (set) JavaScript, вычисление коллизий между спрайтами, анимация спрайтов
 
-Пример: http://www.codeskulptor.org/#user16_kCDAMKm5qf_14.py
+Пример: <http://www.codeskulptor.org/#user16_kCDAMKm5qf_14.py>
 
-# Ссылки
+## Ссылки
 
-1. (Introduction Phasher.io)[https://academy.zenva.com/course/phaser-101-introduction-to-game-development]
-2. (Game Development with Phaser.JS)[https://www.codecademy.com/learn/learn-phaser]
+1. [Introduction Phasher.io](https://academy.zenva.com/course/phaser-101-introduction-to-game-development)
+2. [Game Development with Phaser.JS](https://www.codecademy.com/learn/learn-phaser)
+3. [Phaser.io Labs](https://labs.phaser.io/index.html)
