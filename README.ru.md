@@ -105,3 +105,4 @@ Tutorial: <https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_
 1. [Introduction Phasher.io](https://academy.zenva.com/course/phaser-101-introduction-to-game-development)
 2. [Game Development with Phaser.JS](https://www.codecademy.com/learn/learn-phaser)
 3. [Phaser.io Labs](https://labs.phaser.io/index.html)
+4. [Tiled - Map editor](https://www.mapeditor.org/)
