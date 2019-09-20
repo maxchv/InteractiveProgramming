@@ -2,7 +2,7 @@ let gameScene = new Phaser.Scene("Game");
 
 let config = {
     type: Phaser.AUTO,
-    parent: 'phaser-example',
+    parent: 'guess-number',
     width: 800,
     height: 600,
     scene: gameScene
@@ -16,6 +16,54 @@ gameScene.preload = function preload() {
     this.load.image("btnRange1000", "./assets/button_range1000.png");
     this.load.image("btnRange1000Down", "./assets/button_range1000_down.png");
 }
+
+/**
+ * # template for "Guess the number" mini-project
+# input will come from buttons and an input field
+# all output for the game will be printed in the console
+
+
+
+# helper function to start and restart the game
+def new_game():
+    # initialize global variables used in your code here
+
+    # remove this when you add your code    
+    pass
+
+
+# define event handlers for control panel
+def range100():
+    # button that changes the range to [0,100) and starts a new game 
+    
+    # remove this when you add your code    
+    pass
+
+def range1000():
+    # button that changes the range to [0,1000) and starts a new game     
+    
+    pass
+    
+def input_guess(guess):
+    # main game logic goes here	
+    
+    # remove this when you add your code
+    pass
+
+    
+# create frame
+
+
+# register event handlers for control elements and start frame
+
+
+# call new_game 
+new_game()
+
+
+# always remember to check your completed program against the grading rubric
+
+ */
 
 let range = 100;
 let secretNumber;
@@ -86,14 +134,20 @@ gameScene.create = function create() {
     this.infoMessage = this.add.text(400, 90, '', font);
     this.infoMessage2 = this.add.text(400, 150, '', font);
 
-    const inputNumber = this.add.text(50, 240, "", { fontFamily: '"Roboto Condensed"', fontSize: '18pt' });
+    this.add.text(50, 240, "Enter a guess:", { fontFamily: '"Roboto Condensed"', fontSize: '18pt' });
+    const inputNumber = this.add.text(210, 240, "", { fontFamily: '"Roboto Condensed"', fontSize: '18pt' });
 
     this.addButton({ x: 150, y: 100, texture: 'btnRange100', textureDown: 'btnRange100Down', callback: range100 });
     this.addButton({ x: 150, y: 170, texture: 'btnRange1000', textureDown: 'btnRange1000Down', callback: range1000 });
 
     this.input.keyboard.on('keydown', (event) => {
-        if (event.key >= '0' && event.key <= '9') {
+        console.log(event.key);
+        if (event.key >= '0' && event.key <= '9' && inputNumber.text.length < 3) {
             inputNumber.setText(inputNumber.text + event.key);
+        } else if(event.key == 'Backspace')  {
+            if(inputNumber.text) {
+                inputNumber.setText(inputNumber.text.substr(0, inputNumber.text.length - 1));
+            }
         } else if (event.key == 'Enter') {
             getInput(inputNumber.text);
             inputNumber.setText('');
