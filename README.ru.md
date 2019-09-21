@@ -60,7 +60,7 @@
 
 Пример: <http://www.codeskulptor.org/#user4-PgyXog4HlK-57.py>
 
-Tutorial: <https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser>
+Tutorial: <https://stackabuse.com/introduction-to-phaser-3-building-breakout/>
 
 ### Неделя 6 - Работа с мышью, методы массивов, применение объектов в качестве словарей
 
