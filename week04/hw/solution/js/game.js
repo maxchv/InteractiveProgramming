@@ -11,11 +11,16 @@ let config = {
 let game = new Phaser.Game(config);
 
 gameScene.preload = function preload() {
-    // this.load.image("btnRange100", "./assets/button_range100.png");
+    this.load.image("btnStart", "./assets/button_start.png");
+    this.load.image("btnStartDown", "./assets/button_start_down.png");
+    this.load.image("btnStop", "./assets/button_stop.png");
+    this.load.image("btnStopDown", "./assets/button_stop_down.png");
+    this.load.image("btnReset", "./assets/button_reset.png");
+    this.load.image("btnResetDown", "./assets/button_reset_down.png");
 }
 
 /**
- * # template for "Stopwatch: The Game"
+ # template for "Stopwatch: The Game"
 
 # define global variables
 
@@ -32,20 +37,63 @@ def format(t):
 
 
 # define draw handler
-
-    
+  
 # create frame
-
 
 # register event handlers
 
-
 # start frame
 
-
 # Please remember to review the grading rubric
-
  */
+
+// define global variables
+var nbr_win = 0;
+var nbr_stop_watch = 0;
+var time = 0;
+var timer;
+const interval = 100;
+
+// define helper function format that converts time
+// in tenths of seconds into formatted string A:BC.D
+function format(t) {
+    const sec = Math.floor(t / 10);
+    const zsec = sec % 60 < 10 ? '0' : '';
+    const min = Math.floor(sec / 60);
+    const zmin = min < 10 ? '0' : '';
+    return `${zmin}${min}:${zsec}${sec % 60}.${t % 10}`;
+}
+
+// define event handlers for buttons; "Start", "Stop", "Reset"
+
+function time_handler() {
+    time++;
+}
+
+function start() {
+    if (!timer) {
+        console.log('start');
+        nbr_stop_watch++;
+        timer = setInterval(time_handler, interval);
+    }
+}
+
+function stop() {
+    if (timer) {
+        console.log('stop');
+        clearInterval(timer);
+        timer = undefined;
+        if (time % 10 == 0) {
+            nbr_win++;
+        }
+    }
+}
+
+function reset() {
+    console.log('reset');
+    stop();
+    time = nbr_stop_watch = nbr_win = 0;
+}
 
 gameScene.addButton = function (config) {
     const btn = this.add.image(config.x, config.y, config.texture);
@@ -61,32 +109,15 @@ gameScene.addButton = function (config) {
 
 gameScene.create = function create() {
     font = { fontFamily: '"Roboto Condensed"', fontSize: '18pt', color: 'lightgreen' };
-    this.infoMessage = this.add.text(400, 90, '', font);
-    this.infoMessage2 = this.add.text(400, 150, '', font);
+    this.infoGame = this.add.text(700, 50, '', font);
+    this.infoTime = this.add.text(400, 290, '', { fontFamily: '"Roboto Condensed"', fontSize: '38pt', color: 'white' });
 
-    this.add.text(50, 240, "Enter a guess:", { fontFamily: '"Roboto Condensed"', fontSize: '18pt' });
-    const inputNumber = this.add.text(210, 240, "", { fontFamily: '"Roboto Condensed"', fontSize: '18pt' });
-
-    this.addButton({ x: 150, y: 100, texture: 'btnRange100', textureDown: 'btnRange100Down', callback: range100 });
-    this.addButton({ x: 150, y: 170, texture: 'btnRange1000', textureDown: 'btnRange1000Down', callback: range1000 });
-
-    this.input.keyboard.on('keydown', (event) => {
-        console.log(event.key);
-        if (event.key >= '0' && event.key <= '9' && inputNumber.text.length < 3) {
-            inputNumber.setText(inputNumber.text + event.key);
-        } else if(event.key == 'Backspace')  {
-            if(inputNumber.text) {
-                inputNumber.setText(inputNumber.text.substr(0, inputNumber.text.length - 1));
-            }
-        } else if (event.key == 'Enter') {
-            getInput(inputNumber.text);
-            inputNumber.setText('');
-        }
-    });
-    init();
+    this.addButton({ x: 150, y: 100, texture: 'btnStart', textureDown: 'btnStopDown', callback: start });
+    this.addButton({ x: 150, y: 170, texture: 'btnStop', textureDown: 'btnStopDown', callback: stop });
+    this.addButton({ x: 150, y: 240, texture: 'btnReset', textureDown: 'btnResetDown', callback: reset });
 }
 
 gameScene.update = function () {
-    this.infoMessage.setText(message);
-    this.infoMessage2.setText(message2);
+    this.infoGame.setText(`${nbr_win}/${nbr_stop_watch}`);
+    this.infoTime.setText(format(time));
 }
