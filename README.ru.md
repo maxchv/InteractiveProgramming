@@ -87,6 +87,7 @@ Tutorial: <https://stackabuse.com/introduction-to-phaser-3-building-breakout/>
 5. Визуализация объектов
 
 Пример: <http://www.codeskulptor.org/#user15_ZoYz8vHeMS_82.py>
+Пример js: ,http://labs.phaser.io/edit.html?src=src%5Cinput%5Cgame%20object%5Cdestroy%20sprite%20on%20down%20event.js>
 
 ### Неделя 8 - Физика игры, спрайты
 
