@@ -86,8 +86,8 @@ Tutorial: <https://stackabuse.com/introduction-to-phaser-3-building-breakout/>
 4. Части изображения
 5. Визуализация объектов
 
-Пример: <http://www.codeskulptor.org/#user15_ZoYz8vHeMS_82.py>
-Пример js: ,http://labs.phaser.io/edit.html?src=src%5Cinput%5Cgame%20object%5Cdestroy%20sprite%20on%20down%20event.js>
+[Пример на python](http://www.codeskulptor.org/#user15_ZoYz8vHeMS_82.py)
+[Пример на js](http://labs.phaser.io/edit.html?src=src%5Cinput%5Cgame%20object%5Cdestroy%20sprite%20on%20down%20event.js)
 
 ### Неделя 8 - Физика игры, спрайты
 
@@ -103,7 +103,10 @@ Tutorial: <https://stackabuse.com/introduction-to-phaser-3-building-breakout/>
 
 ## Ссылки
 
-1. [Introduction Phasher.io](https://academy.zenva.com/course/phaser-101-introduction-to-game-development)
-2. [Game Development with Phaser.JS](https://www.codecademy.com/learn/learn-phaser)
-3. [Phaser.io Labs](https://labs.phaser.io/index.html)
-4. [Tiled - Map editor](https://www.mapeditor.org/)
+1. [CodeCombat](https://codecombat.com/)
+2. [Introduction Phasher.io](https://academy.zenva.com/course/phaser-101-introduction-to-game-development)
+3. [Game Development with Phaser.JS](https://www.codecademy.com/learn/learn-phaser)
+4. [Phaser.io Labs](https://labs.phaser.io/index.html)
+5. [Tiled - Map editor](https://www.mapeditor.org/)
+6. [Learn JavaScript](https://learnjavascript.online)
+7. [ChecIO](https://js.checkio.org)
