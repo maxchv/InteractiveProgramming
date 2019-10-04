@@ -110,3 +110,4 @@ Tutorial: <https://stackabuse.com/introduction-to-phaser-3-building-breakout/>
 5. [Tiled - Map editor](https://www.mapeditor.org/)
 6. [Learn JavaScript](https://learnjavascript.online)
 7. [ChecIO](https://js.checkio.org)
+8. [Phaser CheatSheet](https://s3.amazonaws.com/codecademy-content/courses/learn-phaser/Phaser+Quick+Guide.pdf)
