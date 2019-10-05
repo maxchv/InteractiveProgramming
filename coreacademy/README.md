@@ -14,7 +14,7 @@
 * (Keyboard Events)[10]
 * (Sounds)[11]
 
-## Phisics
+## Physics
 
 * (Adding a Sprite)[13]
 * (Implementing Physics)[14]
@@ -30,3 +30,4 @@
 * (Review)[24]
 
 ## MULTI-SCENED GAMES
+
