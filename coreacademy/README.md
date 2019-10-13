@@ -31,3 +31,7 @@
 
 ## MULTI-SCENED GAMES
 
+* (Building a Multi-Scened Phaser Game)[25]
+* (Using Classes in Phaser (ES6))[26]
+* (New Scenes)[27]
+
