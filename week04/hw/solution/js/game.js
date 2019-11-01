@@ -2,10 +2,13 @@ let gameScene = new Phaser.Scene("Game");
 
 let config = {
     type: Phaser.AUTO,
-    parent: 'guess-number',
+    parent: 'game',
     width: 800,
     height: 600,
-    scene: gameScene
+    scene: gameScene,
+    scale: {
+        autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
+    },
 };
 
 let game = new Phaser.Game(config);

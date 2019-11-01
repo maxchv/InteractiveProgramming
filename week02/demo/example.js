@@ -1,7 +1,7 @@
 const readline = require('readline');
 
 const rl = readline.createInterface(process.stdin, process.stdout);
-const rndNumber = Math.round(Math.random() * 100);
+const rndNumber = Math.round(Math.random() * 100) + 1;
 
 var guessCount = 0;
 function show() {
@@ -9,6 +9,10 @@ function show() {
     rl.setPrompt(`Попытка ${guessCount}> `);
     rl.prompt();
 }
+
+console.log("Игра угадай число");
+console.log("Необходимо за минимальное количество попыток угадать число загаданное компьютером.");
+console.log("Число находится в диапазоне от 1 до 100");
 
 show();
 

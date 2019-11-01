@@ -2,10 +2,14 @@ let gameScene = new Phaser.Scene("Game");
 
 let config = {
     type: Phaser.AUTO,
-    parent: 'guess-number',
+    parent: 'game',
     width: 800,
     height: 600,
-    scene: gameScene
+    scene: gameScene,
+    scale: {
+        // Center the game canvas both horizontally within the parent
+        autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
+    },
 };
 
 let game = new Phaser.Game(config);
@@ -144,8 +148,8 @@ gameScene.create = function create() {
         console.log(event.key);
         if (event.key >= '0' && event.key <= '9' && inputNumber.text.length < 3) {
             inputNumber.setText(inputNumber.text + event.key);
-        } else if(event.key == 'Backspace')  {
-            if(inputNumber.text) {
+        } else if (event.key == 'Backspace') {
+            if (inputNumber.text) {
                 inputNumber.setText(inputNumber.text.substr(0, inputNumber.text.length - 1));
             }
         } else if (event.key == 'Enter') {

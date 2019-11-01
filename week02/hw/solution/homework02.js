@@ -82,7 +82,7 @@ var gamesCount = -1;
 var winCount = 0;
 function showPrompt() {
     gamesCount++;
-    rl.setPrompt(`(${winCount}/${gamesCount}) 1. Кмень 2. Ножницы 3. Бумага> `);
+    rl.setPrompt(`(${winCount}/${gamesCount}) 1. Камень 2. Ножницы 3. Бумага> `);
     rl.prompt();
 }
 
