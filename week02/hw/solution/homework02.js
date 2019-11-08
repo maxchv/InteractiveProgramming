@@ -1,6 +1,9 @@
 const readline = require('readline');
 
-const rl = readline.createInterface(process.stdin, process.stdout);
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
 const names = {
     rock: "Камень",
@@ -14,97 +17,50 @@ const results = {
     tie: 0
 }
 
-/*
-# Rock-paper-scissors-lizard-Spock template
-
-
-# The key idea of this program is to equate the strings
-# "rock", "paper", "scissors", "lizard", "Spock" to numbers
-# as follows:
-#
-# 0 - rock
-# 1 - Spock
-# 2 - paper
-# 3 - lizard
-# 4 - scissors
-
-# helper functions
-
-def name_to_number(name):
-    # delete the following pass statement and fill in your code below
-    pass
-
-    # convert name to number using if/elif/else
-    # don't forget to return the result!
-
-
-def number_to_name(number):
-    # delete the following pass statement and fill in your code below
-    pass
-    
-    # convert number to a name using if/elif/else
-    # don't forget to return the result!
-    
-
-def rpsls(player_choice): 
-    # delete the following pass statement and fill in your code below
-    pass
-    
-    # print a blank line to separate consecutive games
-
-    # print out the message for the player's choice
-
-    # convert the player's choice to player_number using the function name_to_number()
-
-    # compute random guess for comp_number using random.randrange()
-
-    # convert comp_number to comp_choice using the function number_to_name()
-    
-    # print out the message for computer's choice
-
-    # compute difference of comp_number and player_number modulo five
-
-    # use if/elif/else to determine winner, print winner message
-
-    
-# test your code - THESE CALLS MUST BE PRESENT IN YOUR SUBMITTED CODE
-rpsls("rock")
-rpsls("Spock")
-rpsls("paper")
-rpsls("lizard")
-rpsls("scissors")
-
-# always remember to check your completed program against the grading rubric
-
-*/
-
+/* Глобальные переменные */
 var gamesCount = -1;
 var winCount = 0;
+
+/* Вывод сообщения */
 function showPrompt() {
     gamesCount++;
-    rl.setPrompt(`(${winCount}/${gamesCount}) 1. Камень 2. Ножницы 3. Бумага> `);
+    rl.setPrompt(`(${winCount}/${gamesCount}) 1. ${names.rock} 2. ${names.scissors} 3. ${names.paper}> `);
     rl.prompt();
 }
 
+// Вспомогательные функции
+
+/*  
+    Задание 1. 
+    Преобразовать число в имя используя switch
+
+    1 - rock
+    2 - scissors
+    3 - paper
+*/
 function numberToName(num) {
-    let choice;
+    // Здесь ваш код
     switch (num) {
         case 1:
-            choice = names.rock;
-            break;
+            return names.rock;
         case 2:
-            choice = names.scissors;
-            break;
+            return names.scissors;
         case 3:
-            choice = names.paper;
-            break;
+            return names.paper;
         default:
             break;
     }
-    return choice;
+    // Не забудте вернуть результат через return
 }
 
-function game(comp, human) {
+/*
+    Задание 2. Сравнить два значения
+
+    Вернуть 0 - если ничья,
+            1 - если игрок (human) выиграл
+           -1 - если компьютер (comp) выиграл
+*/
+function compare(comp, human) {
     if (comp === human) {
         return results.tie;
     } else if (human === names.rock) {
@@ -128,6 +84,7 @@ function game(comp, human) {
     }
 }
 
+/* Ход компьютера */
 function getNextCompName() {
     let n = Math.round(Math.random() * 100) % 3 + 1;
     return numberToName(n);
@@ -135,15 +92,25 @@ function getNextCompName() {
 
 showPrompt();
 
-rl.on('line', function (line) {
-    if (line === "выход") rl.close();
-
+/*
+    Задание 3. Логика игры
+*/
+function game(line) {
+    /* Используя функцию parseInt преобразовать строку line в целое число и сохранить
+       в переменной playerNumber */
     let playerNumber = parseInt(line);
-    if (!isNaN(playerNumber)) {
-        let compName = getNextCompName();
-        let humanName = numberToName(playerNumber);
-        let result = game(compName, humanName);
 
+    /* При помощи функции isNaN проверить, что в переменной playerNumber - целое число  */
+    if (!isNaN(playerNumber)) {
+        /* Вызвать функцию numberToName, в которую передать переменную playerNumber, результат
+           сохранить в переменной humanName */
+        let humanName = numberToName(playerNumber);
+        /* Вызвать функцию getNextCompName() и сохранить результат в переменной compName */
+        let compName = getNextCompName();
+        /* Сравнить результат используя функцию compare, в которую передать два аргумента - compName и humanName,
+           результат сохранить в переменной result */
+        let result = compare(compName, humanName);
+        /* Через switch проверяем результат */
         switch (result) {
             case results.wins:
                 winCount++;
@@ -162,8 +129,19 @@ rl.on('line', function (line) {
     } else {
         console.log(`Введенная строка "${line}" не является числом`);
     }
+}
 
+rl.on('line', function (line) {
+    if (line === "выход" || line === "exit") rl.close();
+    game(line);
     showPrompt();
 }).on('close', function () {
     process.exit(0);
 });
+
+module.exports = {
+    numberToName: numberToName,
+    compare: compare,
+    game: game,
+    rl: rl
+};
