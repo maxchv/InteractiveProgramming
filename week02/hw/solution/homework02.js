@@ -5,9 +5,9 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-/* Глобальные переменные */
-var gamesCount = -1;
-var winCount = 0;
+/* Объявление глобальных переменных */
+var gamesCount = -1; // gamesCount - количество игр
+var winCount = 0;    // winCount - сколько раз выиграл 
 
 /* Вывод сообщения */
 function showPrompt() {
@@ -52,7 +52,7 @@ const results = {
     tie: 0
 }
 /*
-    Задание 2. Сравнить два значения
+    Задание 2. Сравнить два значения comp и human
 
     Вернуть 0 - если ничья,
             1 - если игрок (human) выиграл
