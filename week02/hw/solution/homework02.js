@@ -5,18 +5,6 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-const names = {
-    rock: "Камень",
-    scissors: "Ножницы",
-    paper: "Бумага"
-}
-
-const results = {
-    wins: 1,
-    lose: -1,
-    tie: 0
-}
-
 /* Глобальные переменные */
 var gamesCount = -1;
 var winCount = 0;
@@ -30,6 +18,11 @@ function showPrompt() {
 
 // Вспомогательные функции
 
+const names = {
+    rock: "Камень",
+    scissors: "Ножницы",
+    paper: "Бумага"
+}
 /*  
     Задание 1. 
     Преобразовать число в имя используя switch
@@ -53,6 +46,11 @@ function numberToName(num) {
     // Не забудте вернуть результат через return
 }
 
+const results = {
+    wins: 1,
+    lose: -1,
+    tie: 0
+}
 /*
     Задание 2. Сравнить два значения
 
@@ -89,8 +87,6 @@ function getNextCompName() {
     let n = Math.round(Math.random() * 100) % 3 + 1;
     return numberToName(n);
 }
-
-showPrompt();
 
 /*
     Задание 3. Логика игры
@@ -131,6 +127,7 @@ function game(line) {
     }
 }
 
+showPrompt();
 rl.on('line', function (line) {
     if (line === "выход" || line === "exit") rl.close();
     game(line);
@@ -138,10 +135,3 @@ rl.on('line', function (line) {
 }).on('close', function () {
     process.exit(0);
 });
-
-module.exports = {
-    numberToName: numberToName,
-    compare: compare,
-    game: game,
-    rl: rl
-};
