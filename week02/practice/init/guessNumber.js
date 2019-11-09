@@ -1,8 +1,3 @@
-/*
-Реализовать игру Камень-Ножницы-Бумага. 
-Игра продолжается до 7 попыток
-*/
-
 const readline = require('readline');
 // работа с консольным вводом/выводом 
 const rl = readline.createInterface(process.stdin, process.stdout);
@@ -28,24 +23,20 @@ console.log("Число находится в диапазоне от 1 до 100
 
 // Необходимо реализовать функцию game
 // Функция принимает строковый аргумент line - число введенное игроком
+// Алгоритм решения задачи:
+//  1. Преобразовать строку line - в целое число и сохранить в переменной num
+//  2. Если в num хранитьсе не NaN, то
+//  3. Чрез if проверить, что число num эквивалентно rndNumber, то вывести сообщение, 
+//       что число угадано с guessCount попыток; закрыть консоль (rl.close())
+//  4. Иначе (else if) если число rndNumber > num - вывести сообщение 'Загаданное число больше введенного'
+//  5. Иначе (else if) если число rndNumber < num - вывести сообщение 'Загаданное число меньше введенного'
+//  6. Иначе (else if) если число guessCount > 7 - вывести сообщение 'Игра окончена. Вы не угадали'; закрыть консоль (rl.close())
 function game(line) {
-    let num = parseInt(line);
-    console.log(num);
-    if (isNaN(num)) {
-        console.log(`Введенная строка "${line}" не является числом`);
-    } else {
-        if (rndNumber === num) {
-            console.log(`Число ${rndNumber} угадано c ${guessCount} попыток`);
-            rl.close();
-        } else if (rndNumber > num) {
-            console.log('Загаданное число больше введенного');
-        } else if (rndNumber < num) {
-            console.log('Загаданное число меньше введенного');
-        } else if (guessCount > 7) {
-            console.log("Игра окончена. Вы не угадали.");
-            rl.close();
-        }
-    }
+    // TODO: здесь будет ваш код
+    // FIXME: Убрать этот коментарий и строку ниже
+    throw new Error('Not implemented yet');
+
+
 }
 
 // Здесь ничего менять не нужно
