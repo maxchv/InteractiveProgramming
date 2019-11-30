@@ -14,8 +14,8 @@ function preload() {
       height: 600,
       backgroundColor: "#5f2a55",
       scene: {
-      create,
-      preload
+        create,
+        preload
       }
   }
   

@@ -1,20 +1,33 @@
 let config = {
-    type: Phaser.AUTO,
-    parent: 'game',
     width: 800,
-    height: 600,
+    heigth: 600,
+    type: Phaser.AUTO,
+    //backgroundColor: '#ffffff',
     scene: {
-        create
-    },
-    scale: {
-        autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
-    },
+        preload,
+        create,
+        update
+    }
 };
 
+let dog;
 
 let game = new Phaser.Game(config);
 
+function preload() {
+    console.log('preload');
+    this.load.image('dog', 'img/dog.png'); // загружаем изображение из папки img
+}
+
 function create() {
-    this.add.text(50, 100, 'Hello Phaser.io');
-    this.add.circle(100, 200, 50, 0xff0000);
+    console.log('create');
+    dog = this.add.sprite(100, 100, 'dog'); // добавляем спрайт созданный из изображения dog
+    dog.setScale(0.5); // уменьшаем размер спрайта в два раза
+}
+
+function update() {
+    console.log("update");
+    //console.dir(dog);
+    dog.setX(dog.x + 1); 
+    dog.setY(dog.y + 1);
 }
