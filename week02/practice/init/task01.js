@@ -32,9 +32,7 @@ function printMonthName(line) {
     console.log(typeof (line) + ' ' + line);
 
     // TODO: здесь будет ваш код
-    // FIXME: Убрать этот коментарий и строку ниже
-    throw new Error('Not implemented yet');
-
+    
 
 
 
