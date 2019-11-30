@@ -36,6 +36,14 @@ function preload() {
     this.load.image("btnRange1000Down", "./assets/button_range1000_down.png");
 }
 
+function stub100() {
+    console.log("Error: function range100 is not defined");
+}
+
+function stub1000() {
+    console.log("Error: function range100 is not defined");
+}
+
 function create() {
     font = {
         fontFamily: '"Roboto Condensed"',
@@ -54,19 +62,33 @@ function create() {
         fontSize: '18pt'
     });
 
+    let r100, r1000;
+
+    try {
+        r100 = range100;
+    } catch {
+        r100 = stub100;
+    }
+
+    try {
+        r1000 = range1000;
+    } catch {
+        r1000 = stub1000;
+    }
+
     addButton.call(this, {
         x: 150,
         y: 100,
         texture: 'btnRange100',
         textureDown: 'btnRange100Down',
-        callback: range100
+        callback: r100
     });
     addButton.call(this, {
         x: 150,
         y: 170,
         texture: 'btnRange1000',
         textureDown: 'btnRange1000Down',
-        callback: range1000
+        callback: r1000
     });
 
     this.input.keyboard.on('keydown', (event) => {
@@ -82,10 +104,23 @@ function create() {
             inputNumber.setText('');
         }
     });
-    newGame();
+    try {
+        newGame();
+    } catch {
+        console.log('Error: function newGame() is not defined');
+    }
 }
 
 function update() {
-    this.infoMessage.setText(message);
-    this.infoMessage2.setText(message2);
+    try {
+        this.infoMessage.setText(message);
+    } catch {
+        console.log('Error: message is not defined')
+    }
+
+    try {
+        this.infoMessage.setText(message2);
+    } catch {
+        console.log('Error: message2 is not defined')
+    }
 }
