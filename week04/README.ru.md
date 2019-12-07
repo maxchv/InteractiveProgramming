@@ -1,13 +1,141 @@
-# Неделя 4 - Холст, отрисовка объектов, таймеры
+# Неделя 4 -  Событий-ориентированное программирование: работа с мышью и клавиатурой
 
-Создание холста в JavaScript, отрисовка объектов на холсте, создание игры StopWatch
+Изучаются базовые концепции событий-ориентированного программирвоания, создание простых интерактивных программ
 
-## Холст и отрисовка
+### Взаимодействие с игроком. Событий-ориентированное программирование
 
-## Работа со строками
+Настало время сделать так, что бы в нашу игру можно было играть! 
 
-## Интерактивная отрисовка
+`Phaser` дает нам возможность обрабатывать события связанные с компьютерной мышью и клавиатурой, таким образом нам
+необходимо обрабатывать эти события. 
 
-## Таймеры
+Давайте сейчас рассмотрим способы обработки событий связанных с компьютерной мышью.
 
-## Визуализация отрисоки и таймеры
+Для того, что бы иметь возможность взаимодействовать с игровым объектом (`GameObject`), нам необходимо вызвать метод `setInteractive()` для него. 
+
+Метод `setInteractive()` указывает `Phaser` прослушивать события связанные с этим игровым объектом (`GameObject`).
+
+После вызова метода `setInteractive()` мы можем предоставить игровому объекту (`GameObject`) обработчик события. 
+
+Обработчик события - это фнукция, которая вызывается, когда указанное взаимодействие (событие) происходит для заданного игрового объекта (`GameObject`). 
+
+Рассмотрим четыре события связанных с компьютерной мышью:
+
+* `'pointerdown'`: это событие наступает в тот момент, кгода кнопка компьютерной мыши была нажата (но еще не отпущена) для игрового объекта (`GameObject`).
+* `'pointerup'`: это событие наступает после события `'pointerdown'` в момент, когда кнопка компьютерной мыши была отпущена.
+* `'pointerover'`: это событие наступает тогда, когода указатель компьютерной мыши находится над игровым объектом (`GameObject`).
+* `'pointerout'`: это событие наступает тогда, когода указатель компьютерной мыши выходит за границы игрового объекта (`GameObject`).
+
+Интересным является тот факт, что события `'pointerdown'` и `'pointerup'` - разные. 
+
+Теперь давайте поменяем цвет круга при клике мышкой по нему. 
+
+Мы будем использовать событие `'pointerup'` потому, что это будет означать, что мы кликнули мышкой и только что отпустили кнопку. 
+Мы добавим слушателя на событие `'pointerup'` что бы изменить цвет круга. 
+
+Пример:
+
+```JavaScript
+let circle;
+
+function callback() {
+    this.fillColor = 0x00FF00;
+}
+
+function create() {
+  circle = this.add.circle(50, 50, 20, 0xFF0000);
+  
+  circle.setInteractive();
+  
+  circle.on('pointerup', callback);
+}
+
+const config = {
+    scene: { 
+        create 
+    }
+}
+
+const game = new Phaser.Game(config)
+```
+
+В приведенном выше примере создается красный круг в методе `create()`, затем через метод `setInteractive()` он становится интерактивным. 
+Так как интерактивный игровой объект позволяет взаимодействие с ним мы добавляем слушателя события `'pointerup'`. 
+Для этого вызываем метод `on()` для игрового объекта (`GameObject`).
+
+Метод `on()` принимает два агрумента: имя события (`'pointerup'`) и функцию обратного вызова (слушателя). 
+Мы создали новую функцию `callback()` имя которой передали в качестве второго аргумента в функцию `on()`.
+Внутри функции `callback()` мы изменили цвет круга `this.fillColor`.
+
+Обратите внимание, что в функции `this` ссылается на наш круг, таим обазом не нужно обращаться к глобальной переменной `circle`.
+
+Изменение значения переменной `this.fillColor` позволяет задать цвет для круга (то, что нам нужно).
+
+Заметим, что мы изменили состояние игрового объекта без объявления функции `update()`.
+Слушатели на события могут быть подписаны в функции `create()`, потому, что они являются частью определения игрового объекта (`GameObject`) и настроек игры.
+
+
+# События клавиатуры
+
+Не многие игры используют исключительно компьютерную мышь.
+Большинство браузерных игр, особенно со сложным геймплеем, также используют и клавиатуры. 
+
+До этого момента мы назначали мышинные события только для конкретного игрового объекта (`GameObjects`).
+Это позволяло нам понимать находится ли курсор мышки над игровым объектом или он был кликнут в нашей игре.
+
+Когда игрок кликает мышью в заданной точке игровой сценны мы можем получить координаты `x` и `у`.
+Клавиатура предоставляет другой интерфейс.
+Обработчик события связанные с клавиатурой должен будет обрабатывать нажатия любых клавиш в нашей игре, таким образом подписываться на события мы должны не для конкретного игрового объекта (`GameObjects`), а для игры в целом.
+
+Первый способ добавить обработчик события нажатия клавиш на клавиатуре - это вызвать метод `this.input.keyboard.on()` внутри функции `create()`. 
+Этот метод принимает два аргумента: первый - название события, например `"keyboard-A"` для клавиши `A`. 
+Второй аргумент - функция, которая будет вызвана при нажатии клавишы. 
+
+Пример:
+
+```JavaScript
+
+function keyboardHandler() {
+    circle.fillColor = 0xFFFF00;
+}
+
+function create() {
+  gameState.circle = this.add.circle(30, 30, 10, 0xFF0000);
+  this.input.keyboard.on('keyboard-W', keyboardHandler);
+}
+```
+
+This code creates a red circle and then, when a W is pressed on the keyboard, the circle turns yellow.
+
+createCursorKeys()
+Another way of adding a keyboard event listener is by using a shortcut that Phaser offers, createCursorKeys(). This creates an object that maps the names of some usual cursor keys (UP, DOWN, LEFT, RIGHT, SHIFT, and SPACE) to a cursor object that we can use to detect when they’ve been pressed. We can save those as a property in our gameState object and then check if they’re pressed within our update() function.
+
+```JavaScript
+const gameState = {};
+
+function create() {
+  gameState.circle = this.add.circle(50, 50, 20, 0xFF0000);
+  gameState.cursors = this.input.keyboard.createCursorKeys();
+}
+
+function update() {
+  if (gameState.cursors.left.isDown) {
+    // move the circle left!
+    gameState.circle.x -= 3;
+  }
+}
+
+const config = { scene: { create, update }};
+const game = new Phaser.Game(config);
+```
+
+Above, we created a cursors property for our gameState and assigned the result of .createCursorKeys() to it. In our update() method we checked if the left key is being pressed by checking if gameState.cursors.left.isDown is truthy. If the left button is pressed, we move the circle to the left.
+
+## Вопросы
+
+1. 
+
+## Ссылки
+
+* [Scene](https://photonstorm.github.io/phaser3-docs/Phaser.Scene.html)
+* []()
