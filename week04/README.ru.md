@@ -107,21 +107,23 @@ function create() {
 
 This code creates a red circle and then, when a W is pressed on the keyboard, the circle turns yellow.
 
-createCursorKeys()
-Another way of adding a keyboard event listener is by using a shortcut that Phaser offers, createCursorKeys(). This creates an object that maps the names of some usual cursor keys (UP, DOWN, LEFT, RIGHT, SHIFT, and SPACE) to a cursor object that we can use to detect when they’ve been pressed. We can save those as a property in our gameState object and then check if they’re pressed within our update() function.
+# Объект курсор (cursor)
+
+Another way of adding a keyboard event listener is by using a shortcut that Phaser offers, `createCursorKeys()`. This creates an object that maps the names of some usual cursor keys (UP, DOWN, LEFT, RIGHT, SHIFT, and SPACE) to a cursor object that we can use to detect when they’ve been pressed. We can save those as a property in our gameState object and then check if they’re pressed within our update() function.
 
 ```JavaScript
-const gameState = {};
+let cursor;
+let circle;
 
 function create() {
-  gameState.circle = this.add.circle(50, 50, 20, 0xFF0000);
-  gameState.cursors = this.input.keyboard.createCursorKeys();
+  circle = this.add.circle(50, 50, 20, 0xFF0000);
+  cursors = this.input.keyboard.createCursorKeys();
 }
 
 function update() {
-  if (gameState.cursors.left.isDown) {
-    // move the circle left!
-    gameState.circle.x -= 3;
+  if (cursors.left.isDown) {
+    // перемещаем круг влево
+    circle.x -= 3;
   }
 }
 
@@ -129,11 +131,23 @@ const config = { scene: { create, update }};
 const game = new Phaser.Game(config);
 ```
 
-Above, we created a cursors property for our gameState and assigned the result of .createCursorKeys() to it. In our update() method we checked if the left key is being pressed by checking if gameState.cursors.left.isDown is truthy. If the left button is pressed, we move the circle to the left.
+В примере выше мы создали переменную `cursors` для сохранения объекта, возвращаемого методом `.createCursorKeys()` объекта `this.input.keyboard` внутри функции `create()`.
+
+В функции `update()` делаем проверку нажата ли кнопка на клавиатуре **стрелка влево**: `cursors.left.isDown`. 
+В случае, если кнопка **стрелка влево** нажата, то перемещаем круг налево на 3 пикселя.
 
 ## Вопросы
 
-1. 
+1. Как сделать так, что бы иметь возможность взаимодействовать с игровым объектом?
+2. Какое событие наступает в тот момент, кгода кнопка компьютерной мыши была нажата (но еще не отпущена) для игрового объекта (`GameObject`)?
+3. Какое событие наступает после события `'pointerdown'` в момент, когда кнопка компьютерной мыши была отпущена?
+4. Какое событие наступает тогда, когода указатель компьютерной мыши находится над игровым объектом (`GameObject`)?
+5. Какое событие наступает тогда, когода указатель компьютерной мыши выходит за границы игрового объекта (`GameObject`)?
+6. Какой метод позволяет добавить обработчик события к игровому объекту?
+7. Какие способы существуют в `Phaser` для добавления обработчика события связанного с клавиатурой?
+8. Как называется событие связанное с нажатием кнопки `A` на клавиатуре?
+9.
+10.
 
 ## Ссылки
 
