@@ -1,64 +1,97 @@
 
-# Практическое задание №2
+# Практическое задание
 
+Продолжаем делать [инкрементальную игру](https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D0%BA%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%B8%D0%B3%D1%80%D0%B0).
 
+## Шаг 2
 
-1. Распаковать [заготовку проекта](project.zip) на жесткий диск
-2. Открыть папку `project` в `Visual Studion Code`
-3. В папку `js` добавить файл `game.js`
-4. В файле `game.js` добавить конфигурацию проекта:
+На этом шаге нам необходимо добавить 64 ящика и счетчик показывающий количество ящиков на игровой сцене.
+
+![screenshot](img/task02.gif)
+
+Выполните следующие инструкции:
+
+1. Объявим **глобальну** переменную `count`, которой присвоим значение 64:
 
     ```JavaScript
-    let config = {
-        type: Phaser.AUTO,
-        parent: 'game',
-        width: 800,
-        height: 600,
-        scene: {
-            preload,
-            create
-        }
-    };
+    let count = 64;
+    ```
 
-    let game = new Phaser.Game(config);
+2. Внутри функции `create()` необходимо бернуть в цикл `for` (повторить `count` раз) следующий код:
 
-    function preload() {
+    ```JavaScript
+    for(let i=0; i<count; i++) {
+        let box = this.add.sprite(200, 150, 'box');
 
-    }
-
-    function create() {
-
+        box.setInteractive();
+        box.on('pointerdown', hide);
     }
     ```
 
-5. В функции `preload()` загрузить (`this.load.image()`) файл фона `sky.png` который расположен в папке `img`, дать имя `sky`:
+3. Для того, чтобы ящики размещались в разных местах необходимо сгенерировать случайные координаты
+в диапазоне от 0 до 800 - по оси `x` и от 0 до 600 - по оси `y`.
+Вспоминайте как мы это делали на прошлых занятиях.
+
+4. Добавим текстовый элемент для отображения количества ящиков ([см. документацию](https://photonstorm.github.io/phaser3-docs/Phaser.GameObjects.Text.html)).
+Для этого объявим **глобальную переменную** `info` и в конце функции `create()` добавим следующий код:
 
     ```JavaScript
+    info = this.add.text(10, 10, 'Ящиков: ' + count, { fontSize: 24, fontFamily: 'cursive' });
+    ```
+
+5. Теперь в конце функции `hide()` необходимо уменьшать значение переменной `count` на единицу (декремент) и с учетом измененного количества ящиков отображать текст в `info` через метод `setText()`:
+
+    ```JavaScript
+    count--;
+    info.setText('Ящиков: ' + count);
+    ```
+
+<!--
+Содержимое всего файла `game.js`:
+
+```JavaScript
+const config = {
+    type: Phaser.AUTO,
+    parent: 'game',
+    width: 800,
+    height: 600,
+    scene: {
+        preload,
+        create
+    }
+};
+
+let game = new Phaser.Game(config);
+let count = 64;
+let info;
+
+function preload() {
     this.load.image('sky', './img/sky.png');
-    ```
+    this.load.image('box', './img/box.png');
+}
 
-6. Аналогичным образом загрузить изображение ящика (файл `box.png`) и дать ему имя `box`
-7. В функции `create()` добавить фоновое изображение `sky` (`this.add.image()`) по центру игровой сцены:
+function hide() {
+    this.visible = false;
+    count--;
+    info.text = 'Ящиков: ' + count;
+}
 
-    ```JavaScript
+function create() {
     this.add.image(400, 300, 'sky');
-    ```
 
-8. Также нам необходимо добавить ящик `box` на сцену место с координатами `x=200, y=150`:
+    for (let i = 0; i < count; i++) {
+        let box = this.add.sprite(
+            Math.random() * 800,
+            Math.random() * 600,
+            'box'
+        );
+        box.setInteractive();
+        box.on('pointerdown', hide);
+    }
 
-    ```JavaScript
-    let box = this.add.sprite(200, 150, 'box');
-    box.setInteractive();
-    box.on('pointerdown', function (event) {
-        this.visible = false;
-    });
-    ```
+    info = this.add.text(10, 10, 'Ящиков: ' + count, { fontSize: 24, fontFamily: 'cursive' });
+}
+```
+ -->
 
-9. Сделаем добавленный ящик интерактивным и при клике мышью по игровому объекту сделаем его невидимым:
-
-    ```JavaScript
-    box.setInteractive();
-    box.on('pointerdown', function (event) {
-        this.visible = false;
-    });
-    ```
+Переходим ко [третьему шагу](task3.md) на котором добавим таймер с обратным отсчетом времени
