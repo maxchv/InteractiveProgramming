@@ -119,7 +119,7 @@ function update() {
     }
 
     try {
-        this.infoMessage.setText(message2);
+        this.infoMessage2.setText(message2);
     } catch {
         console.log('Error: message2 is not defined')
     }
