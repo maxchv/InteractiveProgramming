@@ -99,7 +99,7 @@ function update() {
 }
 ```
 
-Для того, что бы спрайт был в пределах игровой сцены используется метод [`secCollideWorldBounds()`](https://photonstorm.github.io/phaser3-docs/Phaser.Physics.Arcade.Sprite.html#setCollideWorldBounds__anchor) для спрайта. В этом случае игровой объект не покинет пределы сцены.
+Для того, что бы спрайт был в пределах игровой сцены используется метод [`secCollideWorldBounds()`](https://photonstorm.github.io/phaser3-docs/Phaser.Physics.Arcade.Sprite.html#setCollideWorldBounds__anchor) для спрайта. В этом случае игровой объект будет иметь коллизию с игровым миром.
 
 ```JavaScript
   player.setCollideWorldBounds(true);
