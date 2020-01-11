@@ -2,6 +2,8 @@
 
 * [Работа с клавиатурой и мышью](https://forms.office.com/Pages/ResponsePage.aspx?id=HqQqHJJbBkmCfgwQ-dc4WRevbNftn25KtbmWZWQZALNUQTNVOUlOUEdJVUcxS1QzQ0kxOU5WRU4zRi4u)
 
+* [Циклы](https://forms.office.com/Pages/ResponsePage.aspx?id=HqQqHJJbBkmCfgwQ-dc4WRevbNftn25KtbmWZWQZALNUM1lHTlhQMEtGRFpGQUkyVllDS1VGNlVRVS4u)
+
 ## Результаты тестов:
 
 Группа ДП 19-9-2 от 21.12.2019
