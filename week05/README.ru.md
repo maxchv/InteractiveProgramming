@@ -140,6 +140,8 @@ function hitBrick(ball, brick) {
 
 Метод [`disableBody()`](https://photonstorm.github.io/phaser3-docs/Phaser.Physics.Arcade.Sprite.html#disableBody__anchor) в функции `hitBrick()` позволяет удалить объект с игровой сцены.
 
+
+![Видео занятия](https://youtu.be/qsfgjVJaY0M)
 <!-- Пример: <http://www.codeskulptor.org/#user4-PgyXog4HlK-57.py>
 
 Tutorial: <https://stackabuse.com/introduction-to-phaser-3-building-breakout/> -->
