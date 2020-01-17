@@ -4,4 +4,4 @@
 
 Игра должна выглядеть следующим образом:
 
-![screenshot](hw.gif)
+![screenshot](hw.GIF)
