@@ -21,7 +21,7 @@
 
 5. В функции `create()` создать спрайт `player` на основе изображения `codey.png` используя метод `this.physics.add.sprite`. Поместить спрайт в локацию `x = 225`, `y = 450`.
 Задать масштаб `player` равный 0.5 (уменьшить в 2 раза) через метод `setScale()`.
-Задать коллизию с игровым миром для `player` через метод `setColliderWorldBounds(true)`
+Задать коллизию с игровым миром для `player` через метод `setCollideWorldBounds(true)`
 
     ![player](img/player.png)
 
