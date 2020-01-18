@@ -1,4 +1,16 @@
-# Неделя 6 - Работа с мышью, методы массивов, применение объектов в качестве словарей
+# Неделя 6 - Массивы, взаимодействие объектов, рестарт игры
+
+<!-- Creating sprites that are affected by physics.
+Creating groups of sprites affected by physics.
+Creating groups of sprites NOT affected by physics.
+Adding Colliders objects between sprites and groups of sprites.
+Creating a loop to continuously execute a function.
+Pausing physics.
+Restarting a Scene. -->
+
+
+
+<!-- Работа с мышью, методы массивов, применение объектов в качестве словарей
 
 Работа с мышью, изучение методов массивов и объектов, отрисовка изображений
 
@@ -14,4 +26,4 @@
 
 ## Ссылки
 
-1. [A 3 part tutorial on using the Graphics features to draw all kinds of interesting shapes.](https://www.phaser.io/news/2017/02/drawing-graphics-tutorials)
+1. [A 3 part tutorial on using the Graphics features to draw all kinds of interesting shapes.](https://www.phaser.io/news/2017/02/drawing-graphics-tutorials) -->
