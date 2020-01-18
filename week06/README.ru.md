@@ -8,7 +8,36 @@ Creating a loop to continuously execute a function.
 Pausing physics.
 Restarting a Scene. -->
 
+## Массивы
 
+**Массив** — это область памяти, где могут последовательно храниться несколько значений.
+Для доступа к элементам массивов исползуются индексы.
+
+## Группа спрайтов
+
+this.physics.add.staticGroup();
+
+platforms.create(225, 490, 'platform')
+
+## Таймер
+
+this.time.addEvent()
+
+## Пересечение игровых объектов 
+
+this.physics.add.overlap()
+
+## Уничтожение объектов
+
+bug.destroy()
+
+## Пауза
+
+this.physics.pause()
+
+## Перезапуск сцены
+
+this.scene.restart()
 
 <!-- Работа с мышью, методы массивов, применение объектов в качестве словарей
 
