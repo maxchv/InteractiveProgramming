@@ -20,9 +20,11 @@ Restarting a Scene. -->
 ```JavaScript
 let arr = []; // создание пустого массива
 
+console.log(arr.length); // 0 элементов в массиве
+
 arr.push(1); // добавление первого элемента
 
-console.log(arr.length);
+console.log(arr.length); // 1 элемент в массиве
 ```
 
 ## Группа спрайтов
