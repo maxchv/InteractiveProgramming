@@ -32,4 +32,4 @@
     * repeat: -1
     * yoyo: true
 
-     ![tweens](img/tween.png)
+     ![tweens](img/tween.PNG)
