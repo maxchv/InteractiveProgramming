@@ -1,299 +1,126 @@
-// Game objects are global variables so that many functions can access them
-let player, ball, violetBricks, yellowBricks, redBricks, cursors;
-// Variable to determine if we started playing
-let gameStarted = false;
-// Add global text objects
-let openingText, gameOverText, playerWonText;
+let gameScene = new Phaser.Scene("Game");
 
-// This object contains all the Phaser configurations to load our game
-const config = {
-  /**
-   * The type can be Phaser.CANVAS, Phaser.WEBGL or Phaser.AUTO. AUTO means that
-   * Phaser will try to render with WebGL, and fall back to Canvas if it fails
-   */
-  type: Phaser.AUTO,
-  // Parent element to inject the Canvas/WebGL element with the game
-  parent: 'game',
-  width: 800,
-  heigth: 640,
-  scale: {
-    // Center the game canvas both horizontally within the parent
-     autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
-  },
-  /**
-   * A scene is "self-contained" game world - all the logic and state of a game
-   * component. For e.g. it's common to a game menu to be one scene, whereas the
-   * first level is another scene. Phaser has a Scene object, but we can provide
-   * a regular JS object with these function names:
-   */
-  scene: {
-    preload,
-    create,
-    update,
-  },
-  /**
-   * The physics engine determines how objects interact with the world. Phaser
-   * supports three physics engines out of the box: arcade, impact and matter.
-   * Arcade is understood to be the simplest one to implement
-   */
-  physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: false
+let config = {
+    type: Phaser.AUTO,
+    parent: 'game',
+    width: 800,
+    height: 600,
+    scene: gameScene,
+    scale: {
+        autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
-  }
 };
 
-// Create the game instance
-const game = new Phaser.Game(config);
+let game = new Phaser.Game(config);
 
-/**
- * The function loads assets as Phaser begins to run the scene. The images are
- * loaded as key value pairs, we reference the assets by their keys of course
- */
-function preload() {
-  this.load.image('ball', 'assets/ball_32_32.png');
-  this.load.image('paddle', 'assets/paddle_128_32.png');
-  this.load.image('brick1', 'assets/brick1_64_32.png');
-  this.load.image('brick2', 'assets/brick2_64_32.png');
-  this.load.image('brick3', 'assets/brick3_64_32.png');
+gameScene.preload = function preload() {
+    this.load.image("btnStart", "./assets/button_start.png");
+    this.load.image("btnStartDown", "./assets/button_start_down.png");
+    this.load.image("btnStop", "./assets/button_stop.png");
+    this.load.image("btnStopDown", "./assets/button_stop_down.png");
+    this.load.image("btnReset", "./assets/button_reset.png");
+    this.load.image("btnResetDown", "./assets/button_reset_down.png");
 }
 
 /**
- * We create our game world in this function. The initial state of our game is
- * defined here. We also set up our physics rules here
+ # template for "Stopwatch: The Game"
+
+# define global variables
+
+
+# define helper function format that converts time
+# in tenths of seconds into formatted string A:BC.D
+def format(t):
+    pass
+    
+# define event handlers for buttons; "Start", "Stop", "Reset"
+
+
+# define event handler for timer with 0.1 sec interval
+
+
+# define draw handler
+  
+# create frame
+
+# register event handlers
+
+# start frame
+
+# Please remember to review the grading rubric
  */
-function create() {
-  /**
-   * Coordinates start at 0,0 from the top left
-   * As we move rightward, the x value increases
-   * As we move downward, the y value increases.
-   */
-  player = this.physics.add.sprite(
-    400, // x position
-    600, // y position
-    'paddle', // key of image for the sprite
-  );
 
-  // Let's add the ball
-  ball = this.physics.add.sprite(
-    400, // x position
-    565, // y position
-    'ball' // key of image for the sprite
-  );
+// define global variables
+var nbr_win = 0;
+var nbr_stop_watch = 0;
+var time = 0;
+var timer;
+const interval = 100;
 
-  // Add violet bricks
-  violetBricks = this.physics.add.group({
-    key: 'brick1',
-    repeat: 9,
-    immovable: true,
-    setXY: {
-      x: 80,
-      y: 140,
-      stepX: 70
-    }
-  });
-
-  // Add yellow bricks
-  yellowBricks = this.physics.add.group({
-    key: 'brick2',
-    repeat: 9,
-    immovable: true,
-    setXY: {
-      x: 80,
-      y: 90,
-      stepX: 70
-    }
-  });
-
-  // Add red bricks
-  redBricks = this.physics.add.group({
-    key: 'brick3',
-    repeat: 9,
-    immovable: true,
-    setXY: {
-      x: 80,
-      y: 40,
-      stepX: 70
-    }
-  });
-
-  // Manage key presses
-  cursors = this.input.keyboard.createCursorKeys();
-
-  // Ensure that the player and ball can't leave the screen
-  player.setCollideWorldBounds(true);
-  ball.setCollideWorldBounds(true);
-  /**
-   * The bounce ensures that the ball retains its velocity after colliding with
-   * an object.
-   */
-  ball.setBounce(1, 1);
-
-  /**
-   * Disable collision with the bottom of the game world. This needs to be added
-   * so the ball falls to the bottom, which means that the game is over
-   */
-  this.physics.world.checkCollision.down = false;
-
-  // Add collision for the bricks
-  this.physics.add.collider(ball, violetBricks, hitBrick, null, this);
-  this.physics.add.collider(ball, yellowBricks, hitBrick, null, this);
-  this.physics.add.collider(ball, redBricks, hitBrick, null, this);
-
-  // Make the player immovable
-  player.setImmovable(true);
-  // Add collision for the player
-  this.physics.add.collider(ball, player, hitPlayer, null, this);
-
-  // Create opening text
-  openingText = this.add.text(
-    this.physics.world.bounds.width / 2,
-    this.physics.world.bounds.height / 2,
-    'Press SPACE to Start',
-    {
-      fontFamily: 'Monaco, Courier, monospace',
-      fontSize: '50px',
-      fill: '#fff'
-    },
-  );
-
-  /**
-   * The origin of the text object is at the top left, change the origin to the
-   * center so it can be properly aligned
-   */
-  openingText.setOrigin(0.5);
-
-  // Create game over text
-  gameOverText = this.add.text(
-    this.physics.world.bounds.width / 2,
-    this.physics.world.bounds.height / 2,
-    'Game Over',
-    {
-      fontFamily: 'Monaco, Courier, monospace',
-      fontSize: '50px',
-      fill: '#fff'
-    },
-  );
-
-  gameOverText.setOrigin(0.5);
-
-  // Make it invisible until the player loses
-  gameOverText.setVisible(false);
-
-  // Create the game won text
-  playerWonText = this.add.text(
-    this.physics.world.bounds.width / 2,
-    this.physics.world.bounds.height / 2,
-    'You won!',
-    {
-      fontFamily: 'Monaco, Courier, monospace',
-      fontSize: '50px',
-      fill: '#fff'
-    },
-  );
-
-  playerWonText.setOrigin(0.5);
-
-  // Make it invisible until the player wins
-  playerWonText.setVisible(false);
+// define helper function format that converts time
+// in tenths of seconds into formatted string A:BC.D
+function format(t) {
+    const sec = Math.floor(t / 10);
+    const zsec = sec % 60 < 10 ? '0' : '';
+    const min = Math.floor(sec / 60);
+    const zmin = min < 10 ? '0' : '';
+    return `${zmin}${min}:${zsec}${sec % 60}.${t % 10}`;
 }
 
-/**
- * Our game state is updated in this function. This corresponds exactly to the
- * update process of the game loop
- */
-function update() {
-  // Check if the ball left the scene i.e. game over
-  if (isGameOver(this.physics.world)) {
-    gameOverText.setVisible(true);
-    ball.disableBody(true, true);
-  } else if (isWon()) {
-    playerWonText.setVisible(true);
-    ball.disableBody(true, true);
-  } else {
-    // Put this in so that the player doesn't move if no key is being pressed
-    player.body.setVelocityX(0);
+// define event handlers for buttons; "Start", "Stop", "Reset"
 
-    /**
-     * Check the cursor and move the velocity accordingly. With Arcade Physics we
-     * adjust velocity for movement as opposed to manipulating xy values directly
-     */
-    if (cursors.left.isDown) {
-      player.body.setVelocityX(-350);
-    } else if (cursors.right.isDown) {
-      player.body.setVelocityX(350);
+function time_handler() {
+    time++;
+}
+
+function start() {
+    if (!timer) {
+        console.log('start');
+        nbr_stop_watch++;
+        timer = setInterval(time_handler, interval);
     }
+}
 
-    // The game only begins when the user presses Spacebar to release the paddle
-    if (!gameStarted) {
-      // The ball should follow the paddle while the user selects where to start
-      ball.setX(player.x);
-
-      if (cursors.space.isDown) {
-        gameStarted = true;
-        ball.setVelocityY(-200);
-        openingText.setVisible(false);
-      }
+function stop() {
+    if (timer) {
+        console.log('stop');
+        clearInterval(timer);
+        timer = undefined;
+        if (time % 10 == 0) {
+            nbr_win++;
+        }
     }
-  }
 }
 
-/**
- * Checks if the user lost the game
- * @param world - the physics world
- * @return {boolean}
- */
-function isGameOver(world) {
-  return ball.body.y > world.bounds.height;
+function reset() {
+    console.log('reset');
+    stop();
+    time = nbr_stop_watch = nbr_win = 0;
 }
 
-/**
- * Checks if the user won the game
- * @return {boolean}
- */
-function isWon() {
-  return violetBricks.countActive() + yellowBricks.countActive() + redBricks.countActive() == 0;
+gameScene.addButton = function (config) {
+    const btn = this.add.image(config.x, config.y, config.texture);
+    btn.setInteractive();
+    btn.on('pointerdown', function (event) {
+        this.setTexture(config.textureDown);
+        config.callback();
+    });
+    btn.on('pointerup', function (event) {
+        this.setTexture(config.texture);
+    });
 }
 
-/**
- * This function handles the collision between a ball and a brick sprite
- * In the create function, ball is a sprite and violetBricks, yellowBricks and
- * redBricks are sprite groups. Phaser is smart enough to handle the collisions
- * for each individual sprite.
- * @param ball - the ball sprite
- * @param brick - the brick sprite
- */
-function hitBrick(ball, brick) {
-  brick.disableBody(true, true);
+gameScene.create = function create() {
+    font = { fontFamily: '"Roboto Condensed"', fontSize: '18pt', color: 'lightgreen' };
+    this.infoGame = this.add.text(700, 50, '', font);
+    this.infoTime = this.add.text(400, 290, '', { fontFamily: '"Roboto Condensed"', fontSize: '38pt', color: 'white' });
 
-  if (ball.body.velocity.x == 0) {
-    randNum = Math.random();
-    if (randNum >= 0.5) {
-      ball.body.setVelocityX(150);
-    } else {
-      ball.body.setVelocityX(-150);
-    }
-  }
+    this.addButton({ x: 150, y: 100, texture: 'btnStart', textureDown: 'btnStopDown', callback: start });
+    this.addButton({ x: 150, y: 170, texture: 'btnStop', textureDown: 'btnStopDown', callback: stop });
+    this.addButton({ x: 150, y: 240, texture: 'btnReset', textureDown: 'btnResetDown', callback: reset });
 }
 
-/**
- * The function handles the collision between the ball and the player. We want
- * to ensure that the ball's direction after bouncing off the player is based
- * on which side of the player was hit. Also, to make things more difficult, we
- * want to increase the ball's velocity when it's hit.
- * @param ball - the ball sprite
- * @param player - the player/paddle sprite
- */
-function hitPlayer(ball, player) {
-  // Increase the velocity of the ball after it bounces
-  ball.setVelocityY(ball.body.velocity.y - 5);
-
-  let newXVelocity = Math.abs(ball.body.velocity.x) + 5;
-  // If the ball is to the left of the player, ensure the x velocity is negative
-  if (ball.x < player.x) {
-    ball.setVelocityX(-newXVelocity);
-  } else {
-    ball.setVelocityX(newXVelocity);
-  }
+gameScene.update = function () {
+    this.infoGame.setText(`${nbr_win}/${nbr_stop_watch}`);
+    this.infoTime.setText(format(time));
 }

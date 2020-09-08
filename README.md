@@ -1,52 +1,120 @@
-# An Introduction to Interactive Programming in JavaScript
+# Введение в интерактивное программирование на JavaScript
 
-## Syllabus - What you will learn from this course
+## Обзор - Что вы выучите
 
-### Week 0 - Statements, expressions, variables 
-Understand the structure of this class, explore JavaScript as a calculator
-1. Introduction
-2. Installation nodejs. REPL
-3. Arithmetic Expressions
-4. Variables
-5. Installation Vistual Studio Code, must have plugins
+### [Неделя 1 - Переменные, выражения, команды](week01)
 
-### Week 1 - Functions, logic, conditionals
-Learn the basic constructs of JavaScript programming, create a program that plays a variant of Rock-Paper-Scissors
-1. Functions
-2. Logic and Comparisons
-3. Conditionals
+Применение `JavaScript` в качестве калькулятора
 
-### Week 2 - Event-driven programming, local/global variables
-Learn the basics of event-driven programming, understand difference between local and global variables, create an interactive program that plays a simple guessing game
-1. Event-Driven Programming
-2. Local vs. Global Variables
-3. Phaser.io game engine
+1. Введение. Почему именно `JavaScript`
+2. Установка `node.js`. `REPL`
+3. Типы данных. Числа.
+4. Математические операции. Роль скобок в математических операциях.
+    4.1. Комбинированное присваивание.
+        4.1.1 Присваивание со сложением.
+        4.1.2 Присваивание с вычитанием.
+        4.1.3 Присваивание с умножением.
+        4.1.4 Присваивание с делением.
+    4.2. Инкремент (++). Декремент (––).
+    4.3. Оператор % (взятие остатка).
+    4.4. Нахождение чётных и нечётных чисел
+5. Переменные, операции над переменными
+6. Установка `Vistual Studio Code`, необходимы плагины (`LiveServer`, `Beautify`, `Debugger for Chrome`, `Node.js Extension Pack`)
 
-### Week 3 - Canvas, drawing, timers
-Create a canvas in JavaScript, learn how to draw on the canvas, create a digital stopwatch
-1. Canvas and Drawing
-2. String Processing
-3. Interactive Drawing
-4. Timers
-5. Visualizing Drawing and Timers
+### [Неделя 2 - логические операции, выражения](week02)
 
-### Week 4 - Arrays, keyboard input, the basics of modeling motion
-Learn the basics of array in JavaScript, model moving objects in JavaScript, recreate the classic arcade game "Pong"
-1. Arrays
-2. Keyboard Input
-3. Motion
-4. Collisions and Reflections
-5. Velocity Control
-6. Visualizing Lists and Mutation
+Изучение базовых конструкций языка `JavaScript`. Проект консольной игры **Камень-Ножницы-Бумага**
 
-### Week 5 - Mouse input, array methods, object as dictionaries
-Read mouse input, learn about array methods and object, draw images
+1. Логические выражения и сравнение
+2. Условные выражения
+    2.1. Условия `if()`
+    2.2. Условия `switch()`
+3. Циклы
+    3.1. Цикл с предусловием `while()`
+    3.2. Цикл с постусловием `do..while()`
+    3.3. Цикл со счетчиком `for()`
 
-### Week 6 - Classes and object-oriented programming
-Learn the basics of object-oriented programming in JavaScript using object, work with tiled images
+### [Неделя 3 - Функции](week03)
 
-### Week 7 - Basic game physics, sprites
-Understand the math of acceleration and friction, work with sprites, add sound to your game
+Изучаются основные концепции функций как именованных блоков кода.
 
-### Week 8 - Sets and animation
-Learn about sets in JavaScript, compute collisions between sprites, animate sprites
+1. Необходимость применения функций.\
+2. Объявление и вызов функции
+3. Параметры и аргументы функции
+4. Возвращаемые значения функций
+5. Консольный ввод/вывод
+
+### [Неделя 4 - Событий-ориентированное программирование, локальные и глобальные переменные](week04)
+
+Изучаются базовые концепции событий-ориентированного программирования, основные отличия между локальными и глобальными переменными, создание простых интерактивных программы угадай число
+
+1. Событий-ориентированное программирование
+2. Локальные и глобальные переменные
+3. Введение в игровой дивижок phaser.io
+
+### [Неделя 4 - Холст, отрисовка объектов, таймеры](week04)
+
+Создание холста в `JavaScript` на базе движка `phaser.io`, отрисовка объектов на холсте, создание игры `StopWatch`
+
+1. Холст и отрисовка игровых объектов
+2. Работа со строками
+3. Интерактивная отрисовка
+4. Таймеры
+5. Визуализация отрисок и таймеры
+
+### [Неделя 5 - Массивы, работа с клавиатурой, моделирование перемещения объектов](week05)
+
+Изучение основ работы с массивами в `JavaScript`, моделирование перемещения объектов в `JavaScript`, классическая аркадная игра **Pong**
+
+1. Массивы
+2. Ввод с клавиатуры
+3. Движение
+4. Коллизии и отскок
+5. Управление скоростью
+
+### [Неделя 6 - Работа с мышью, методы массивов, применение объектов в качестве словарей](week06)
+
+Работа с мышью, изучение методов массивов и объектов, отрисовка изображений
+
+1. Работа с мышью
+2. Итерации
+3. Объект - как ассоциативный массив
+4. Изображения
+5. Визуализация итераций
+
+Пример js: <http://divideby5.com/games/memorymatcher/>
+
+### [Неделя 7 - Объектно-ориентированное программирование](week07)
+
+Использование объектов в JavaScript, работа с отдельными частями изображения
+
+1. Объектно-ориентированное программирование
+2. Работа с объектами
+3. Объекты для игры Blackjack
+4. Части изображения
+5. Визуализация объектов
+
+[Пример на js](http://labs.phaser.io/edit.html?src=src%5Cinput%5Cgame%20object%5Cdestroy%20sprite%20on%20down%20event.js)
+
+### [Неделя 8 - Физика игры, спрайты](week08)
+
+Моделирование ускорения и торможения, работа со спрайтами, добавление звуковых эффектов в игру
+
+Пример: <http://www.codeskulptor.org/#examples-ricerocks_template.py>
+
+### [Неделя 9 - Множества и анимация](week09)
+
+Изучение множеств (set) JavaScript, вычисление коллизий между спрайтами, анимация спрайтов
+
+Пример: <http://www.codeskulptor.org/#user16_kCDAMKm5qf_14.py>
+
+## Ссылки
+
+1. [CodeCombat](https://codecombat.com/)
+2. [Introduction Phasher.io](https://academy.zenva.com/course/phaser-101-introduction-to-game-development)
+3. [Game Development with Phaser.JS](https://www.codecademy.com/learn/learn-phaser)
+4. [Phaser.io Labs](https://labs.phaser.io/index.html)
+5. [Tiled - Map editor](https://www.mapeditor.org/)
+6. [Learn JavaScript](https://learnjavascript.online)
+7. [ChecIO](https://js.checkio.org)
+8. [Phaser CheatSheet](https://s3.amazonaws.com/codecademy-content/courses/learn-phaser/Phaser+Quick+Guide.pdf)
