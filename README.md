@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Введение в интерактивное программирование на JavaScript
 
 ## Обзор - Что вы выучите
@@ -95,19 +94,23 @@
 4. Части изображения
 5. Визуализация объектов
 
-[Пример на js](http://labs.phaser.io/edit.html?src=src%5Cinput%5Cgame%20object%5Cdestroy%20sprite%20on%20down%20event.js)
+<!-- [Пример на js](http://labs.phaser.io/edit.html?src=src%5Cinput%5Cgame%20object%5Cdestroy%20sprite%20on%20down%20event.js) -->
 
 ### [Неделя 8 - Физика игры, спрайты](week08)
 
 Моделирование ускорения и торможения, работа со спрайтами, добавление звуковых эффектов в игру
 
-Пример: <http://www.codeskulptor.org/#examples-ricerocks_template.py>
+<!-- Пример: <http://www.codeskulptor.org/#examples-ricerocks_template.py> -->
 
 ### [Неделя 9 - Множества и анимация](week09)
 
 Изучение множеств (set) JavaScript, вычисление коллизий между спрайтами, анимация спрайтов
 
-Пример: <http://www.codeskulptor.org/#user16_kCDAMKm5qf_14.py>
+<!-- Пример: <http://www.codeskulptor.org/#user16_kCDAMKm5qf_14.py> -->
+
+### Экзамен
+
+[Перейти](exam/README.md)
 
 ## Ссылки
 
@@ -119,48 +122,3 @@
 6. [Learn JavaScript](https://learnjavascript.online)
 7. [ChecIO](https://js.checkio.org)
 8. [Phaser CheatSheet](https://s3.amazonaws.com/codecademy-content/courses/learn-phaser/Phaser+Quick+Guide.pdf)
-=======
-# Введение в программирование на JavaScript
-
-## Силабус - Что вы будете изучать
-
-### Неделя 1
-
-[Перейти](week01/README.ru.md)
-
-### Неделя 2
-
-[Перейти](week02/README.ru.md)
-
-### Неделя 3
-
-[Перейти](week03/README.ru.md)
-
-### Неделя 4
-
-[Перейти](week04/README.ru.md)
-
-### Неделя 5
-
-[Перейти](week05/README.ru.md)
-
-### Неделя 6
-
-[Перейти](week06/README.ru.md)
-
-### Неделя 7
-
-[Перейти](week07/README.ru.md)
-
-### Неделя 8
-
-[Перейти](week08/README.ru.md)
-
-### Неделя 9
-
-[Перейти](week09/README.ru.md)
-
-### Экзамен
-
-[Перейти](exam/README.md)
->>>>>>> ece4973d7f7510122d0a71345377d98bac6097e3
