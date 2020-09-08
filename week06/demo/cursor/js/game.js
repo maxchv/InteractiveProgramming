@@ -2,7 +2,7 @@ let config = {
     width: 800,
     heigth: 600,
     type: Phaser.AUTO,
-    parent: 'game',
+    parent: 'game',    
     scene: {
         preload,
         create,
@@ -17,6 +17,7 @@ let config = {
 let game = new Phaser.Game(config);
 
 let circle;
+let cursors;
 
 function preload() {
     console.log('preload');
@@ -24,9 +25,17 @@ function preload() {
 
 function create() {
     console.log('create');
-    circle = this.add.circle(400, 300, 20, 0xFF0000);
+    circle = this.add.circle(400, 300, 20, 0xFFFFFF);
+    cursors = this.input.keyboard.createCursorKeys();
 
 }
-function update() {
 
+function update() {
+    if(cursors.left.isDown) {
+        circle.x -= 2;
+    } else if(cursors.space.isDown) {
+        circle.x = 400;
+        circle.y = 300;
+    }
+    
 }

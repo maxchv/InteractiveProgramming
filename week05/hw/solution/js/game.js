@@ -89,38 +89,104 @@ function stop() {
         if (time % 10 == 0) {
             nbr_win++;
         }
+        // The game only begins when the user presses Spacebar to release the paddle
+        if (!gameStarted) {
+            // The ball should follow the paddle while the user selects where to start
+            ball.setX(player.x);
+
+            if (cursors.space.isDown) {
+                gameStarted = true;
+                ball.setVelocityY(-200);
+                ball.setVelocityX(150);
+                openingText.setVisible(false);
+            }
+        }
     }
-}
 
-function reset() {
-    console.log('reset');
-    stop();
-    time = nbr_stop_watch = nbr_win = 0;
-}
+    function reset() {
+        console.log('reset');
+        stop();
+        time = nbr_stop_watch = nbr_win = 0;
+    }
 
-gameScene.addButton = function (config) {
-    const btn = this.add.image(config.x, config.y, config.texture);
-    btn.setInteractive();
-    btn.on('pointerdown', function (event) {
-        this.setTexture(config.textureDown);
-        config.callback();
-    });
-    btn.on('pointerup', function (event) {
-        this.setTexture(config.texture);
-    });
-}
+    gameScene.addButton = function (config) {
+        const btn = this.add.image(config.x, config.y, config.texture);
+        btn.setInteractive();
+        btn.on('pointerdown', function (event) {
+            this.setTexture(config.textureDown);
+            config.callback();
+        });
+        btn.on('pointerup', function (event) {
+            this.setTexture(config.texture);
+        });
+    }
 
-gameScene.create = function create() {
-    font = { fontFamily: '"Roboto Condensed"', fontSize: '18pt', color: 'lightgreen' };
-    this.infoGame = this.add.text(700, 50, '', font);
-    this.infoTime = this.add.text(400, 290, '', { fontFamily: '"Roboto Condensed"', fontSize: '38pt', color: 'white' });
+    gameScene.create = function create() {
+        font = {
+            fontFamily: '"Roboto Condensed"',
+            fontSize: '18pt',
+            color: 'lightgreen'
+        };
+        this.infoGame = this.add.text(700, 50, '', font);
+        this.infoTime = this.add.text(400, 290, '', {
+            fontFamily: '"Roboto Condensed"',
+            fontSize: '38pt',
+            color: 'white'
+        });
 
-    this.addButton({ x: 150, y: 100, texture: 'btnStart', textureDown: 'btnStopDown', callback: start });
-    this.addButton({ x: 150, y: 170, texture: 'btnStop', textureDown: 'btnStopDown', callback: stop });
-    this.addButton({ x: 150, y: 240, texture: 'btnReset', textureDown: 'btnResetDown', callback: reset });
-}
+        this.addButton({
+            x: 150,
+            y: 100,
+            texture: 'btnStart',
+            textureDown: 'btnStopDown',
+            callback: start
+        });
+        this.addButton({
+            x: 150,
+            y: 170,
+            texture: 'btnStop',
+            textureDown: 'btnStopDown',
+            callback: stop
+        });
+        this.addButton({
+            x: 150,
+            y: 240,
+            texture: 'btnReset',
+            textureDown: 'btnResetDown',
+            callback: reset
+        });
+    }
 
-gameScene.update = function () {
-    this.infoGame.setText(`${nbr_win}/${nbr_stop_watch}`);
-    this.infoTime.setText(format(time));
-}
+    gameScene.update = function () {
+        this.infoGame.setText(`${nbr_win}/${nbr_stop_watch}`);
+        this.infoTime.setText(format(time));
+        // if (ball.body.velocity.x == 0) {
+        //   randNum = Math.random();
+        //   if (randNum >= 0.5) {
+        //     ball.body.setVelocityX(150);
+        //   } else {
+        //     ball.body.setVelocityX(-150);
+        //   }
+        // }
+    }
+
+    /**
+     * The function handles the collision between the ball and the player. We want
+     * to ensure that the ball's direction after bouncing off the player is based
+     * on which side of the player was hit. Also, to make things more difficult, we
+     * want to increase the ball's velocity when it's hit.
+     * @param ball - the ball sprite
+     * @param player - the player/paddle sprite
+     */
+    function hitPlayer(ball, player) {
+        // Increase the velocity of the ball after it bounces
+        // ball.setVelocityY(ball.body.velocity.y - 5);
+
+        // let newXVelocity = Math.abs(ball.body.velocity.x) + 5;
+        // // If the ball is to the left of the player, ensure the x velocity is negative
+        // if (ball.x < player.x) {
+        //   ball.setVelocityX(-newXVelocity);
+        // } else {
+        //   ball.setVelocityX(newXVelocity);
+        // }
+    }
