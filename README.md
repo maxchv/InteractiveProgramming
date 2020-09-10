@@ -96,7 +96,7 @@
 
 <!-- Пример: <http://www.codeskulptor.org/#examples-ricerocks_template.py> -->
 
-### Экзамен(exam/README.md)
+### [Экзамен](exam)
 <!-- Екзамен (1 заняття) -->
 
 ## Ссылки
