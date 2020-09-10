@@ -233,6 +233,7 @@ function update() {
       if (cursors.space.isDown) {
         gameStarted = true;
         ball.setVelocityY(-200);
+        ball.setVelocityX(150);
         openingText.setVisible(false);
       }
     }
@@ -267,14 +268,14 @@ function isWon() {
 function hitBrick(ball, brick) {
   brick.disableBody(true, true);
 
-  if (ball.body.velocity.x == 0) {
-    randNum = Math.random();
-    if (randNum >= 0.5) {
-      ball.body.setVelocityX(150);
-    } else {
-      ball.body.setVelocityX(-150);
-    }
-  }
+  // if (ball.body.velocity.x == 0) {
+  //   randNum = Math.random();
+  //   if (randNum >= 0.5) {
+  //     ball.body.setVelocityX(150);
+  //   } else {
+  //     ball.body.setVelocityX(-150);
+  //   }
+  // }
 }
 
 /**
@@ -287,13 +288,13 @@ function hitBrick(ball, brick) {
  */
 function hitPlayer(ball, player) {
   // Increase the velocity of the ball after it bounces
-  ball.setVelocityY(ball.body.velocity.y - 5);
+  // ball.setVelocityY(ball.body.velocity.y - 5);
 
-  let newXVelocity = Math.abs(ball.body.velocity.x) + 5;
-  // If the ball is to the left of the player, ensure the x velocity is negative
-  if (ball.x < player.x) {
-    ball.setVelocityX(-newXVelocity);
-  } else {
-    ball.setVelocityX(newXVelocity);
-  }
+  // let newXVelocity = Math.abs(ball.body.velocity.x) + 5;
+  // // If the ball is to the left of the player, ensure the x velocity is negative
+  // if (ball.x < player.x) {
+  //   ball.setVelocityX(-newXVelocity);
+  // } else {
+  //   ball.setVelocityX(newXVelocity);
+  // }
 }

@@ -1,66 +1,51 @@
-# Практическое задание
+# Практическое задание. Часть 1
 
-На этом практическом занятии мы закрепим знания и создадим игру в которой будет анимация движения игровых объектов.
+На этом практическом занятии мы закрепим знания и создадим простую игру:
 
-![task](img/task.gif)
+![Bugs](img/task.gif)
 
 ## Шаг 1
 
-Создаем проект и добавляем изображение со спрайтами игрового объекта. Анимируем перемещение объекта.
+1. Загрузить и распаковать архив проекта практического задания [ссылка](bugs.zip)
+2. Добавить настройки физики в `config`. Задать гравитацию по оси y = 200
 
-1. Загрузить и распаковать архив проекта практического задания [ссылка](animation.zip)
-2. Объявить глобальные переменные: `player`, `enemy`, `exit`, `cursors`, `active`
-Переменной `active` присвоить значение `true`
+    ![physics](img/physics.png)
 
-    ![variables](img/02.png)
+3. В функции `preload()` через `this.load.image` загрузить изображения из [bug_1.png](solution/img/bug_1.png), [`bug_2.png`](solution/img/bug_2.png), [`bug_3.png`](solution/img/bug_3.png), [`platform.png`](solution/img/platform.png) и [`codey.png`](solution/img/codey.png) из папки [img](solution/img)
 
-3. Загружаем набор спрайтов. Для этого в файле `game.js` внутри метода `preload()` вызвать метод `this.load.spritesheet()` в который передать следующие аргументы:
-    * 'codey'
-    * 'img/codey_sprite.png'
-    * { frameWidth: 72, frameHeight: 90 }
+    ![preload](img/preload.png)
 
-    ![spritesheet](img/03.png)
+4. Объявить глобальных переменных `score = 0`, `scoreText`, `player`, `cursors`, `bugGenLoop` и массив `bugs`
 
-4. Создаем физический спрайт игрока.
-       Для этого в методе create() присвоить переменной player значение возвращаемое методом
-       this.physics.add.sprite() при вызове со следующими аргументами:
-       * 255
-       * 500
-       * 'codey'
+    ![vars](img/vars.png)
 
-    ![player sprite](img/04.png)
+5. В функции `create()` создать спрайт `player` на основе изображения `codey.png` используя метод `this.physics.add.sprite`. Поместить спрайт в локацию `x = 225`, `y = 450`.
+Задать масштаб `player` равный 0.5 (уменьшить в 2 раза) через метод `setScale()`.
+Задать коллизию с игровым миром для `player` через метод `setCollideWorldBounds(true)`
 
-5. Создаем анимацию при передвижении игрока. Для этого внутри метода create()вызываем this.anims.create() и передаем туда следующий объект:
+    ![player](img/player.png)
 
-    ```JavaScript
-    {
-        key: 'run',
-        frames: this.anims.generateFrameNumbers('codey', { start: 0, end: 3 }),
-        frameRate: 5,
-        repeat: -1
-    }
-    ```
+6. Создаем статическую группу `platforms` через метод `this.physics.add.staticGroup()`
 
-     ![run](img/05.png)
+    ![platforms](img/platforms.png)
 
-6. Создаем анимацию когда игрок стоит. Для этого внутри метода create() вызываем this.anims.create() и передаем туда следующий объект:
+7. Из статической группы создаем объект `ground` вызывая метод `create()`.
+Задаем масштаб `ground` через метод `setScale(1, 0.3)`.
+Обновляем объект `ground` через метод `refreshBody()`
 
-    ```JavaScript
-    {
-        key: 'idle',
-        frames: this.anims.generateFrameNumbers('codey', {
-            start: 4,
-            end: 5
-        }),
-        frameRate: 5,
-        repeat: -1
-    }
-    ```
+    ![ground](img/ground.png)
 
-    ![idle](img/06.png)
+8. Что бы игрок не проваливался вниз, а стоял на платформе добавляем коллизию
+между `player` и `ground` через метод `this.physics.add.collider()`
 
-7. Добавляем коллизию между игроком и платформой, игроком и миром
+    ![player_platform](img/player_platform.png)
 
-    ![collision](img/07.png)
+9. В функции `create()` создать объект `cursors` для управления объектом `player`
 
-Для управления игроком [переходим ко второму шагу](task02.md)
+    ![cursor](img/cursor.png)
+
+10. В функции `update()` реализовать движение `player` при нажатии кнопок влево и вправо
+
+    ![update](img/update.png)
+
+[Переходим ко второму шагу](task02.md)

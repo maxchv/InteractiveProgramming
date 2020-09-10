@@ -1,10 +1,10 @@
-# Тесты шестой недели
+# Тесты пятой недели
 
-* [Массивы, взаимодействие объектов, рестарт игры](https://forms.office.com/Pages/ResponsePage.aspx?id=HqQqHJJbBkmCfgwQ-dc4WRevbNftn25KtbmWZWQZALNURU5EWUpJUUxMSUZKQTNVM0s5UVY0QjVLMy4u)
+* [Работа с клавиатурой, массивы, моделирование перемещения объектов](https://forms.office.com/Pages/ResponsePage.aspx?id=HqQqHJJbBkmCfgwQ-dc4WRevbNftn25KtbmWZWQZALNUQ1QzUjBJU0xaVzBHT04zS0hMNEszQkdGTC4u)
 
 ## Результаты тестов
 
-Группа ДП 19-9-2 от 25.01.2020
+Группа ДП 19-9-2 от 18.01.2020
 
  № п/п |             ФИО                       |             |  
  ------|---------------------------------------|-------------|-------------
@@ -20,4 +20,4 @@
 10     |    ТАРАН АНАСТАСИЯ ЮРЬЕВНА    	       |             |
 11     |    Татаринцев Михаил Викторович	   |             |
 12     |    Тараненко Владислав Витальевич	   |             |
-
+13     |    Щербина Тарас Сергеевич	           |             |
