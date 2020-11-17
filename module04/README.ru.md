@@ -255,5 +255,7 @@ function update() {
 
 ## Ссылки
 
+* [Making Your First Phaser 3 Game in Modern Javascript](https://blog.ourcade.co/posts/2020/make-first-phaser-3-game-modern-javascript-part1/?_ga=2.48303334.1989911993.1605605191-265684176.1605605191)
 * [Scene](https://photonstorm.github.io/phaser3-docs/Phaser.Scene.html)
-* []()
+* [Learning Phaser 3. A roadmap for beginning game development](https://ourcade.co/roadmaps/learning-phaser/)
+* [How to Really Make a Phaser Game from Scratch - UNCUT](https://www.youtube.com/playlist?list=PLumYWZ2t7CRvdJJ206QarbisxYPAyYwj0)
